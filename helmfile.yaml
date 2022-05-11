@@ -5,6 +5,9 @@ repositories:
   # Ingress nginx chart, https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
   - name: ingress-nginx
     url: https://kubernetes.github.io/ingress-nginx
+  # K8s gateway chart, https://github.com/ori-edge/k8s_gateway/tree/master/charts/k8s-gateway
+  - name: k8s-gateway
+    url: https://ori-edge.github.io/k8s_gateway/
 
 namespace: external
 
@@ -20,6 +23,12 @@ releases:
     chart: ingress-nginx/ingress-nginx
     values:
       - values/ingress-nginx.yaml.gotmpl
+
+  # K8s gateway
+  - name: k8s-gateway
+    chart: k8s-gateway/k8s-gateway
+    values:
+      - values/k8s-gateway.yaml.gotmpl
 
 values:
   - .env.{{ .Environment.Name }}.yaml
