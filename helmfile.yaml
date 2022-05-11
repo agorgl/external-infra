@@ -2,6 +2,9 @@ repositories:
   # Metallb chart, https://github.com/metallb/metallb/tree/main/charts/metallb
   - name: metallb
     url: https://metallb.github.io/metallb
+  # Ingress nginx chart, https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
 
 namespace: external
 
@@ -11,6 +14,12 @@ releases:
     chart: metallb/metallb
     values:
       - values/metallb.yaml.gotmpl
+
+  # Ingress nginx
+  - name: ingress-nginx
+    chart: ingress-nginx/ingress-nginx
+    values:
+      - values/ingress-nginx.yaml.gotmpl
 
 values:
   - .env.{{ .Environment.Name }}.yaml
