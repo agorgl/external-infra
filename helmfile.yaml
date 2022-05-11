@@ -1,0 +1,16 @@
+repositories:
+  # Metallb chart, https://github.com/metallb/metallb/tree/main/charts/metallb
+  - name: metallb
+    url: https://metallb.github.io/metallb
+
+namespace: external
+
+releases:
+  # Metallb
+  - name: metallb
+    chart: metallb/metallb
+    values:
+      - values/metallb.yaml.gotmpl
+
+values:
+  - .env.{{ .Environment.Name }}.yaml
