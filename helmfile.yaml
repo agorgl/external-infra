@@ -39,5 +39,9 @@ releases:
     values:
       - values/cert-manager.yaml.gotmpl
 
+  # Local CA
+  - name: local-ca
+    chart: charts/local-ca
+
 values:
   - .env.{{ .Environment.Name }}.yaml
