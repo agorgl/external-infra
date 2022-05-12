@@ -8,6 +8,9 @@ repositories:
   # K8s gateway chart, https://github.com/ori-edge/k8s_gateway/tree/master/charts/k8s-gateway
   - name: k8s-gateway
     url: https://ori-edge.github.io/k8s_gateway/
+  # Cert manager chart, https://github.com/cert-manager/cert-manager/tree/master/deploy/charts/cert-manager
+  - name: jetstack
+    url: https://charts.jetstack.io
 
 namespace: external
 
@@ -29,6 +32,12 @@ releases:
     chart: k8s-gateway/k8s-gateway
     values:
       - values/k8s-gateway.yaml.gotmpl
+
+  # Cert manager
+  - name: cert-manager
+    chart: jetstack/cert-manager
+    values:
+      - values/cert-manager.yaml.gotmpl
 
 values:
   - .env.{{ .Environment.Name }}.yaml
